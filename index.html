@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カフェオーダー</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<!-- ポップアップ（モーダル） -->
+<div id="option-modal" class="modal">
+  <div class="modal-content">
+    <h2 id="option-title">BLTサンドのオプション</h2>
+
+    <div class="option-page page1 active">
+      <p>オプションを選択してください：</p>
+      <div class="option-list">
+        <button class="option-btn" data-value="ベーコン抜き">☑ ベーコン抜き</button>
+        <button class="option-btn" data-value="レタス抜き">☑ レタス抜き</button>
+        <button class="option-btn" data-value="トマト抜き">☑ トマト抜き</button>
+      </div>
+      <button id="modal-next" class="modal-next">次へ →</button>
+    </div>
+
+    <div class="option-page page2">
+      <p>ご一緒にいかがですか？</p>
+      <div class="option-list">
+        <button class="set-btn" data-value="コーヒー（+650円）">☕ コーヒー（+650円）</button>
+        <button class="set-btn" data-value="卵（+100円）">🥚 卵（+100円）</button>
+      </div>
+      <div class="modal-footer">
+        <button id="add-to-cart" class="modal-confirm">カートに入れる</button>
+      </div>
+    </div>
+
+    <button id="close-modal" class="modal-close">×</button>
+  </div>
+</div>
+
+<body>
+  <div class="container">
+
+    <!-- カテゴリボタン -->
+    <div class="category-bar">
+      <button class="category active">おすすめ</button>
+      <button class="category">ドリンク</button>
+      <button class="category">コーヒー</button>
+      <button class="category">紅茶</button>
+      <button class="category">スイーツ</button>
+      <button class="category">サンドイッチ</button>
+      <button class="category">軽食</button>
+      <button class="category">季節限定</button>
+      <button class="category">モーニング</button>
+    </div>
+
+    <div class="main-area">
+      <!-- 左側メインエリア -->
+      <div class="menu-area">
+        <div class="menu-item large" data-name="フレンチトースト">🍞 フレンチトースト</div>
+        <div class="menu-row">
+          <div class="menu-item" data-name="カフェラテ">☕ カフェラテ</div>
+          <div class="menu-item" data-name="抹茶パフェ">🍨 抹茶パフェ</div>
+        </div>
+      </div>
+
+      <!-- 右側カートと操作ボタン -->
+      <div class="sidebar">
+        <div class="cart">
+          <h3>🛒 カート</h3>
+          <ul id="cart-list"></ul>
+        </div>
+        
+        <div class="cart-total">
+            合計：<span id="total-amount">0</span> 円
+        </div>
+
+        <div class="button-group">
+          <button id="order-btn" class="btn order">注文する</button>
+          <button id="back-btn" class="btn back">最初に戻る</button>
+          <button id="clear-btn" class="btn clear">全取消</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

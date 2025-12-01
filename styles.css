@@ -1,0 +1,486 @@
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  background-color: white;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.category-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.category {
+  flex: 1 1 auto;
+  background-color: #ececec;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 0;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.category:hover,
+.category.active {
+  background-color: #dcdcdc;
+}
+
+.main-area {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.menu-area {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+  height:625px;
+}
+
+.menu-row {
+  display: flex;
+  gap: 20px;
+}
+
+/* 商品画像レイアウト */
+.menu-item {
+  position: relative;
+  flex:1;
+  width: 100%;
+  height: 240px;                /*高さをmenu-item系統にすべて反映して管理、item-系列は%指定*/
+  border-radius: 16px;
+  background-color: #e5e5e5;  /*画像がない時の予備*/
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+  text-align: center;
+  font-size: 20px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.menu-item.large {
+  flex: none;
+  height: 30%;
+  padding: 80px 0px;
+}
+
+/*縦長2つ*/
+.menu-item.vertical {
+  width: 50%;
+  height: 600px;
+}
+
+/*横長2つ*/
+.menu-item.horizontal {
+  flex: none;
+  width: 98%;
+  height: 47%;
+}
+
+.menu-item.vertical.small {
+  flex: none;
+  width: 50%;
+  height: 600px;
+}
+
+.menu-item.horizontal.small {
+  flex: none;
+  width: 95%;
+  height: 190px; /* 小さい横長 */
+}
+
+.menu-column {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex: 1;
+}
+
+/*コーヒーページ用のレイアウト*/
+.menu-area.coffee .menu-item {
+  flex: 1;
+  height: 275px; /* 一段あたりのカード高さ */
+}
+
+/* .menu-item:hover {
+  transform: scale(1.03);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.25); 
+}*/
+
+/* 下部の黒帯（名前＋値段） */
+.menu-overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 0;
+  background: rgba(0,0,0,0.45);
+  text-align: center;
+  color: #fff;
+}
+
+.menu-name {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin: 0;
+}
+
+.menu-price {
+  margin: 4px 0 0;
+  font-size: 0.9em;
+}
+
+/*写真位置調整*/
+/*おすすめ*/
+.menu-item[data-name="フレンチトースト"] {
+  background-position: 50% 40%;      /*左右中心　上寄り*/
+}
+.menu-item[data-name="抹茶パフェ"] {
+  background-position: 50% 20%;      
+}
+.menu-item[data-name="カフェラテ"] {
+  background-position: 50% 30%;      
+}
+/*ドリンク*/
+.menu-item[data-name="オレンジジュース"] {
+  background-position: 50% 15%;      
+}
+.menu-item[data-name="アイスティー"] {
+  background-size: 130%;
+  background-position: 50% 15%; 
+}
+.menu-item[data-name="コーラ"] {
+  background-position: 50% 25%;      
+}
+/*コーヒー*/
+.menu-item[data-name="アイスコーヒー"] {
+  background-position: 50% 15%;     
+}
+/*紅茶*/
+.menu-item[data-name="アールグレイ"] {
+  background-position: 50% 20%;     
+}
+.menu-item[data-name="ダージリン"] {
+  background-position: 50% 20%;     
+}
+.menu-item[data-name="ミルクティー"] {
+  background-position: 50% 30%;     
+}
+/*スイーツ*/
+.menu-item[data-name="チーズケーキ"] {
+  background-position: 50% 35%;     
+}
+.menu-item[data-name="チョコパフェ"] {
+  background-position: 50% 15%;     
+}
+/*サンドイッチ*/
+.menu-item[data-name="BLTサンド"] {
+  background-position: 50% 55%;     
+}
+.menu-item[data-name="たまごサンド"] {
+  background-position: 50% 30%;     
+}
+/*金額表示*/
+.price {
+  display: block;
+  font-size: 16px;
+  margin-top: 8px;
+  color: #555;
+  font-weight: bold;
+}
+
+
+/*複数ページ*/
+.pagination {
+  display: flex;
+  justify-content: space-between;/*両端に配置*/
+  /*align-items: center;*/
+  gap: 12px;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.page-btn {
+  background-color: #ccc;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.page-btn:disabled {
+  background-color: #eee;
+  cursor: not-allowed;
+}
+
+/*カート*/
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cart {
+  background-color: #e5e5e5;
+  border-radius: 10px;
+  padding: 15px;
+  flex-grow: 1;
+  overflow-y: auto;
+  height: 300px;
+}
+/*カート飽和時のスクロールバー*/
+.cart::-webkit-scrollbar {
+  width: 6px;
+}
+.cart::-webkit-scrollbar-thumb {
+  background-color: #d0d0d0; /* ← 背景と近い色 */
+  border-radius: 3px;
+}
+.cart h3 {
+  margin-top: 0;
+  font-size: 18px;
+}
+#cart-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#cart-list li {
+  background: white;
+  margin-bottom: 8px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+/*合計金額*/
+.cart-total {
+  background-color: #fff;
+  border-radius: 8px;
+  margin-top: 12px;
+  padding: 10px;
+  font-size: 18px;
+  text-align: left;
+  font-weight: bold;
+  border: 1px solid #ddd;
+}
+
+/*操作ボタン*/
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn {
+  border: none;
+  color: white;
+  border-radius: 8px;
+  font-size: 18px;
+  padding: 12px 0;
+  cursor: pointer;
+}
+
+.order {
+  background-color: #b16600;
+}
+
+.back {
+  background-color: #0073e6;
+}
+
+.clear {
+  background-color: #d62828;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+/*カートスワイプ削除
+.swipe-item {
+  position: relative;
+  background: white;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.swipe-content {
+  padding: 8px 10px;
+  transition: transform 0.3s ease;
+}
+
+.swipe-delete {
+  position: absolute;
+  right: -80px;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  background-color: #d62828;
+  color: white;
+  border: none;
+  transition: right 0.3s ease;
+  cursor: pointer;
+}
+
+.swipe-item.show-delete .swipe-content {
+  transform: translateX(-80px);
+}
+
+.swipe-item.show-delete .swipe-delete {
+  right: 0;
+}
+*/
+/*カート削除ボタン常設*/
+.cart-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-start;
+  background: white;
+  margin-bottom: 8px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+/* 左端に小さい削除ボタン */
+.remove-btn {
+  background: transparent;
+  border: none;
+  color: #d62828;
+  font-size: 14px;
+  cursor: pointer;
+  margin-right: 4px;
+  padding: 2px 4px;
+  line-height: 1;
+  border-radius: 4px;
+}
+
+/*商品オプションポップアップ*/
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  width: 600px;
+  max-width: 90%;
+  padding: 30px;
+  position: relative;
+  text-align: center;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  border: none;
+  background: transparent;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.option-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.option-btn,
+.set-btn {
+  background-color: #eee;
+  border: none;
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.option-btn.active {
+  background-color: #dcdcdc;
+}
+
+.modal-next,
+.modal-confirm {
+  background-color: #0073e6;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.modal-footer {
+  margin-top: 20px;
+}
+
+.option-page {
+  display: none;
+}
+
+.option-page.active {
+  display: block;
+}
+
+/*チェック項目全体*/
+.page1 .option-list{
+  display: flex;
+  flex-direction: column; /*縦並びにする*/
+  gap: 8px;
+}
+
+/*各オプションの行*/
+.checkbox-option {
+  display: block;
+  align-items: center;
+  gap: 10px;
+  background: #eee;
+  border-radius: 6px;
+  padding: 10px 15px;
+  font-size: 18px;
+  cursor: default; /*チェックボックス以外クリック判定させない*/
+  user-select: none;
+}
+
+.checkbox-option:hover {
+  background: #eee;
+}
+
+/*チェックボックス*/
+.option-check {
+  width: 20px;
+  height: 20px;
+  accent-color: #0073e6; /* チェック時の色 */
+  cursor: pointer;
+}
+
+/*テキスト部分はクリックさせない*/
+.option-text{
+  pointer-events: none;
+}
